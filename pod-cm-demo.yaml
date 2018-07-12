@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nameapp
+  labels:
+    type: nameapp
+
+spec:
+  containers:
+   - name: nameapp
+     image: ankitaluthra1/k8s-config-sample:1.0
+     ports:
+     - containerPort: 8080
+     env:
+     - name: NAME
+       valueFrom:
+         configMapKeyRef:
+           name: special-config
+           key: name
